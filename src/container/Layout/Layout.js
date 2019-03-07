@@ -60,15 +60,13 @@ const PortfolioLayout = ({ children }) => (
             </Menu>
           </Sider>
           <Layout>
-            <HeaderWrapper>
-              <Header style={{ background: '#fff', padding: 0 }}>
-                <Breadcrumb style={{ margin: '16px 0' }}>
-                  <Breadcrumb.Item>Home</Breadcrumb.Item>
-                  <Breadcrumb.Item>List</Breadcrumb.Item>
-                  <Breadcrumb.Item>App</Breadcrumb.Item>
-                </Breadcrumb>
-              </Header>
-            </HeaderWrapper>
+            <Header style={{ background: '#fff', padding: 0 }}>
+              <Breadcrumb style={{ margin: '16px 0' }}>
+                <Breadcrumb.Item>Home</Breadcrumb.Item>
+                <Breadcrumb.Item>List</Breadcrumb.Item>
+                <Breadcrumb.Item>App</Breadcrumb.Item>
+              </Breadcrumb>
+            </Header>
             <Content>{children}</Content>
             <Footer style={{ textAlign: 'center' }}>
               <Links>
@@ -117,6 +115,9 @@ const Styled = styled.div`
 
     & .ant-layout-header {
       display: flex;
+      position: fixed;
+      width: 100%;
+      box-shadow: 0px 2px 10px rgba(0,0,0,0.25);
 
       & > * {
         display: flex;
@@ -138,13 +139,6 @@ const Styled = styled.div`
       padding: 0 16px 24px;
     }
   }
-`;
-
-const HeaderWrapper = styled.div`
-  position: fixed;
-  width: 100%;
-  background: #f0f2f5;
-  padding-bottom: 5px;
 `;
 
 const Links = styled.div`
