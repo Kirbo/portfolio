@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { FontAwesomeIcon as FAIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
@@ -20,7 +20,16 @@ const Styled = styled.div`
 
   & .ant-layout {
     height: 100%;
-    width: 100%;
+    flex: 1 0 auto;
+    ${props =>
+      props.broken &&
+      css`
+        flex: 1 0 100%;
+      `}
+
+    .ant-layout-sider-zero-width-trigger {
+      z-index: 10;
+    }
 
     & .logo {
       width: 100%;
@@ -29,8 +38,6 @@ const Styled = styled.div`
 
     & .ant-layout-header {
       display: flex;
-      position: fixed;
-      width: 100%;
 
       & > * {
         display: flex;
@@ -54,12 +61,19 @@ const Styled = styled.div`
   }
 `;
 
+const HeaderWrapper = styled.div`
+  position: fixed;
+  width: 100%;
+  background: #f0f2f5;
+  padding-bottom: 5px;
+`;
+
 const Links = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 
-  & A {
+  & a {
     filter: grayscale(100%);
     color: #666;
     opacity: 0.5;
@@ -78,6 +92,11 @@ const Links = styled.div`
     }
   }
 `;
+const LinkName = styled.div`
+  ${props => props.broken && css`
+    display: none;
+  `}
+`;
 
 const Copyright = styled.div`
   padding: 20px 0 0;
@@ -88,11 +107,28 @@ const YEAR_STARTED = 2019;
 const YEAR_NOW = new Date().getFullYear();
 
 const PortfolioLayout = ({ children }) => (
-  <Styled>
-    <Consumer>
-      {({ sliderCollapsed, toggleSlider }) => (
+  <Consumer>
+    {({
+      sliderCollapsed,
+      toggleSlider,
+      collapsedWidth,
+      onBreakpoint,
+      broken
+    }) => (
+      <Styled
+        sliderCollapsed={sliderCollapsed}
+        collapsedWidth={collapsedWidth}
+        broken={broken}
+      >
         <Layout>
-          <Sider collapsible collapsed={sliderCollapsed} onCollapse={toggleSlider}>
+          <Sider
+            breakpoint="lg"
+            collapsedWidth={collapsedWidth}
+            collapsible
+            collapsed={sliderCollapsed}
+            onBreakpoint={onBreakpoint}
+            onCollapse={toggleSlider}
+          >
             <div className="logo" />
             <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
               <Menu.Item key="1">
@@ -110,37 +146,36 @@ const PortfolioLayout = ({ children }) => (
             </Menu>
           </Sider>
           <Layout>
-            <Header style={{ background: '#fff', padding: 0 }}>
-              <Breadcrumb style={{ margin: '16px 0' }}>
-                <Breadcrumb.Item>Home</Breadcrumb.Item>
-                <Breadcrumb.Item>List</Breadcrumb.Item>
-                <Breadcrumb.Item>App</Breadcrumb.Item>
-              </Breadcrumb>
-            </Header>
-            <Content>
-              {children}
-            </Content>
+            <HeaderWrapper>
+              <Header style={{ background: '#fff', padding: 0 }}>
+                <Breadcrumb style={{ margin: '16px 0' }}>
+                  <Breadcrumb.Item>Home</Breadcrumb.Item>
+                  <Breadcrumb.Item>List</Breadcrumb.Item>
+                  <Breadcrumb.Item>App</Breadcrumb.Item>
+                </Breadcrumb>
+              </Header>
+            </HeaderWrapper>
+            <Content>{children}</Content>
             <Footer style={{ textAlign: 'center' }}>
               <Links>
                 {PROFILE_LINKS.map(({ name, url, icon, color }) => (
                   <A href={url} key={name}>
                     <FAIcon icon={['fab', icon]} size="2x" color={color} />
-                    <div>
-                      {name}
-                    </div>
+                    <LinkName broken={broken}>{name}</LinkName>
                   </A>
                 ))}
               </Links>
               <Copyright>
                 Kimmo Saari ©{YEAR_STARTED}
-                {YEAR_NOW > YEAR_STARTED && ` - ${YEAR_NOW}`} Created by <A href="https://ant.design/docs/react/introduce">Ant UED</A>
+                {YEAR_NOW > YEAR_STARTED && ` - ${YEAR_NOW}`} | Created by{' '}
+                <A href="https://ant.design/docs/react/introduce">Ant UED</A>
               </Copyright>
             </Footer>
           </Layout>
         </Layout>
-      )}
-    </Consumer>
-  </Styled>
+      </Styled>
+    )}
+  </Consumer>
 );
 
 export default PortfolioLayout;

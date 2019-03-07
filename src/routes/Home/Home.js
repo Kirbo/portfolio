@@ -8,7 +8,7 @@ const Styled = styled.div`
 
 const Home = () => (
   <Styled>
-    Hello world!
+    <div>Hello world!</div>
   </Styled>
 );
 

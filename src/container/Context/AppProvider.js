@@ -10,7 +10,13 @@ class AppProvider extends Component {
       this.setState(prevState => ({
         sliderCollapsed: !prevState.sliderCollapsed,
       }))
-    }
+    },
+    onBreakpoint: (broken) => {
+      this.setState(prevState => ({
+        broken,
+        collapsedWidth: broken ? 0 : 80,
+      }))
+    },
   };
 
   render = () => (
