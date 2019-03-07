@@ -58,10 +58,12 @@ build:
 
 deploy:
   <<: *general
+  image: alpine-rsync
   stage: deploy
   dependencies:
     - build
   script:
-    - ${update_pages}
+    - ssh-add <(echo "$PRIVATE_KEY")
+    - ${UPDATE_PAGES}
   only:
     - master
