@@ -172,9 +172,9 @@ const Links = styled.div`
   }
 `;
 const LinkName = styled.div`
-  ${props => props.broken && css`
+  @media only screen and (max-width: 374px) {
     display: none;
-  `}
+  }
 `;
 
 const Copyright = styled.div`
