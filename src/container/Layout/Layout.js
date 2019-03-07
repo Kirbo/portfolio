@@ -29,6 +29,8 @@ const Styled = styled.div`
 
     & .ant-layout-header {
       display: flex;
+      position: fixed;
+      width: 100%;
 
       & > * {
         display: flex;
@@ -37,19 +39,37 @@ const Styled = styled.div`
         padding: 0 10px;
       }
     }
+
+    & .ant-layout-content {
+      margin: 80px 16px 0;
+      padding: 24px;
+      background: #fff;
+      min-height: 280px;
+      flex: 1 0 auto;
+    }
+
+    & .ant-layout-footer {
+      padding: 0 16px 24px;
+    }
   }
 `;
 
 const Links = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
 
   & A {
     filter: grayscale(100%);
     color: #666;
     opacity: 0.5;
     transition: all 0.5s ease;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px 0;
 
     &:hover {
       filter: grayscale(0%);
@@ -60,7 +80,8 @@ const Links = styled.div`
 `;
 
 const Copyright = styled.div`
-  margin: 40px 0 20px;
+  padding: 20px 0 0;
+  border-top: 1px solid #ccc;
 `;
 
 const YEAR_STARTED = 2019;
@@ -71,7 +92,7 @@ const PortfolioLayout = ({ children }) => (
     <Consumer>
       {({ sliderCollapsed, toggleSlider }) => (
         <Layout>
-          <Sider trigger={null} collapsible collapsed={sliderCollapsed}>
+          <Sider collapsible collapsed={sliderCollapsed} onCollapse={toggleSlider}>
             <div className="logo" />
             <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
               <Menu.Item key="1">
@@ -90,25 +111,13 @@ const PortfolioLayout = ({ children }) => (
           </Sider>
           <Layout>
             <Header style={{ background: '#fff', padding: 0 }}>
-              <Icon
-                className="trigger"
-                type={sliderCollapsed ? 'menu-unfold' : 'menu-fold'}
-                onClick={toggleSlider}
-              />
               <Breadcrumb style={{ margin: '16px 0' }}>
                 <Breadcrumb.Item>Home</Breadcrumb.Item>
                 <Breadcrumb.Item>List</Breadcrumb.Item>
                 <Breadcrumb.Item>App</Breadcrumb.Item>
               </Breadcrumb>
             </Header>
-            <Content
-              style={{
-                margin: '24px 16px',
-                padding: 24,
-                background: '#fff',
-                minHeight: 280
-              }}
-            >
+            <Content>
               {children}
             </Content>
             <Footer style={{ textAlign: 'center' }}>
