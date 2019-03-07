@@ -12,27 +12,47 @@ image: node:8.11.2
 
 ###### STAGES #################################################################
 stages:
+  - install
   - test
   - build
   - deploy
 
 ###### JOBS ###################################################################
+install:
+  <<: *general
+  stage: install
+  script:
+    - yarn install
+  artifacts:
+    expire_in: 1 day
+    paths:
+      - node_modules
+  only:
+    - master
+
 test:
   <<: *general
   stage: test
+  artifacts:
+    paths:
+      - coverage
+    expire_in: 1 month
   script:
-    - yarn test
+    - yarn test --ci --coverage
   only:
     - master
 
 build:
   <<: *general
   stage: build
+  dependencies:
+    - install
   script:
     - yarn build
   artifacts:
+    expire_in: 1 day
     paths:
-    - build
+      - build
   only:
     - master
 
