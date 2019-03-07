@@ -20,28 +20,31 @@ const YEAR_NOW = new Date().getFullYear();
 const PortfolioLayout = ({ children }) => (
   <Consumer>
     {({
-      sliderCollapsed,
-      toggleSlider,
+      broken,
       collapsedWidth,
       onBreakpoint,
-      broken
+      onClickMenuItem,
+      onCollapse,
+      sliderCollapsed,
     }) => (
       <Styled
-        sliderCollapsed={sliderCollapsed}
-        collapsedWidth={collapsedWidth}
         broken={broken}
       >
         <Layout>
           <Sider
             breakpoint="lg"
-            collapsedWidth={collapsedWidth}
-            collapsible
             collapsed={sliderCollapsed}
+            onCollapse={onCollapse}
+            collapsedWidth={collapsedWidth}
             onBreakpoint={onBreakpoint}
-            onCollapse={toggleSlider}
           >
             <div className="logo" />
-            <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+            <Menu
+              theme="dark"
+              mode="inline"
+              defaultSelectedKeys={['1']}
+              onClick={onClickMenuItem}
+            >
               <Menu.Item key="1">
                 <Icon type="user" />
                 <span>nav 1</span>

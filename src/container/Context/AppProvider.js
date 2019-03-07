@@ -6,15 +6,20 @@ import { Provider } from './Context';
 class AppProvider extends Component {
   state = {
     ...INITIAL_STATE,
-    toggleSlider: () => {
-      this.setState(prevState => ({
-        sliderCollapsed: !prevState.sliderCollapsed,
-      }))
-    },
     onBreakpoint: (broken) => {
       this.setState(prevState => ({
         broken,
         collapsedWidth: broken ? 0 : 80,
+      }))
+    },
+    onClickMenuItem: () => {
+      this.setState(prevState => ({
+        sliderCollapsed: true,
+      }))
+    },
+    onCollapse: () => {
+      this.setState(prevState => ({
+        sliderCollapsed: !prevState.sliderCollapsed,
       }))
     },
   };
