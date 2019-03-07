@@ -14,7 +14,7 @@ class AppProvider extends Component {
     },
     onClickMenuItem: () => {
       this.setState(prevState => ({
-        sliderCollapsed: true,
+        sliderCollapsed: prevState.broken && !prevState.sliderCollapsed,
       }))
     },
     onCollapse: () => {
