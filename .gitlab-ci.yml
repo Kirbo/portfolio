@@ -58,7 +58,7 @@ build:
 
 deploy:
   <<: *general
-  image: alpine-rsync
+  image: sergeyfast/alpine-rsync
   stage: deploy
   dependencies:
     - build
