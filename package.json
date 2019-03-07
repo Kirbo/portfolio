@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "repository": "https://gitlab.devaus.eu/kirbo/portfolio.git",
+  "homepage": "https://kirbo.dev",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "1.2.15",
     "@fortawesome/free-brands-svg-icons": "5.7.2",

@@ -63,7 +63,7 @@ deploy:
   dependencies:
     - build
   script:
-    - ssh-add < $(echo "$PRIVATE_KEY")
+    - echo "$PRIVATE_KEY" | ssd-add -
     - ${UPDATE_PAGES}
   only:
     - master
