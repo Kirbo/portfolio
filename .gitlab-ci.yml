@@ -69,6 +69,6 @@ deploy:
     - chmod 600 ~/.ssh/id_rsa
     - ssh-add ~/.ssh/id_rsa
   script:
-    - rsync -e 'ssh -o StrictHostKeyChecking=no' build/* ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PATH} --delete-after -r -v
+    - rsync -e 'ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=quiet' build/* ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PATH} --delete-after -r -v
   only:
     - master
