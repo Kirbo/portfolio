@@ -2,7 +2,13 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
+  "repository": "https://gitlab.devaus.eu/kirbo/portfolio.git",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "1.2.15",
+    "@fortawesome/free-brands-svg-icons": "5.7.2",
+    "@fortawesome/free-regular-svg-icons": "5.7.2",
+    "@fortawesome/free-solid-svg-icons": "5.7.2",
+    "@fortawesome/react-fontawesome": "0.1.4",
     "antd": "3.14.1",
     "babel-plugin-import": "1.11.0",
     "customize-cra": "0.2.12",
@@ -11,7 +17,8 @@
     "react": "16.8.4",
     "react-app-rewired": "2.1.0",
     "react-dom": "16.8.4",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "styled-components": "4.1.3"
   },
   "scripts": {
     "start": "react-app-rewired start",

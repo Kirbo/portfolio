@@ -1,0 +1,37 @@
+# https://docs.gitlab.com/ce/ci/yaml/README.html
+
+###### GENERAL ################################################################
+image: node:8.11.2
+
+###### STAGES #################################################################
+stages:
+  - test
+  - build
+  - deploy
+
+###### JOBS ###################################################################
+test:
+  stage: test
+  script:
+    - yarn test
+  only:
+    - master
+
+build:
+  stage: build
+  script:
+    - yarn build
+  artifacts:
+    paths:
+    - build
+  only:
+    - master
+
+deploy:
+  stage: deploy
+  dependencies:
+    - build
+  script:
+    - ${update_pages}
+  only:
+    - master
