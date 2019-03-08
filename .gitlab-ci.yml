@@ -22,6 +22,7 @@ install:
   <<: *general
   stage: install
   cache:
+    policy: pull-push
     paths:
       - node_modules
   script:
@@ -32,6 +33,8 @@ install:
 test:
   <<: *general
   stage: test
+  cache:
+    policy: pull
   dependencies: []
   artifacts:
     paths:
@@ -45,6 +48,8 @@ test:
 build:
   <<: *general
   stage: build
+  cache:
+    policy: pull
   dependencies: []
   script:
     - yarn build
@@ -59,7 +64,7 @@ deploy:
   <<: *general
   image: sergeyfast/alpine-rsync
   stage: deploy
-  cache: []
+  cache: {}
   dependencies:
     - build
   before_script:
