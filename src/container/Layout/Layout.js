@@ -105,9 +105,10 @@ const PortfolioLayout = ({ history, children }) => (
                 ))}
               </Links>
               <Copyright>
-                Kimmo Saari ©{YEAR_STARTED}
-                {YEAR_NOW > YEAR_STARTED && ` - ${YEAR_NOW}`} | Created by{' '}
-                <A href="https://ant.design/docs/react/introduce">Ant UED</A>
+                <div>
+                  Kimmo Saari ©{YEAR_STARTED} {YEAR_NOW > YEAR_STARTED && ` - ${YEAR_NOW}`}
+                </div>
+                {/* <div>Created by <A href="https://ant.design/docs/react/introduce">Ant UED</A></div> */}
               </Copyright>
             </Footer>
           </Layout>
@@ -245,12 +246,8 @@ const Styled = styled.div`
     }
 
     & .ant-layout-footer {
-      padding: 0 16px 24px;
+      padding: 0 16px;
       text-align: center;
-
-      & a {
-        color: #a60d0d;
-      }
     }
   }
 `;
@@ -286,8 +283,12 @@ const LinkName = styled.div`
 `;
 
 const Copyright = styled.div`
-  padding: 20px 0 0;
+  padding: 10px 0;
   border-top: 1px solid #ccc;
+
+  & a {
+    color: #a60d0d;
+  }
 `;
 
 export default PortfolioLayout;
