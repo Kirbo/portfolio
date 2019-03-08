@@ -80,13 +80,13 @@ const PortfolioLayout = ({ history, children }) => (
           <Layout>
             <Header>
               <div className="logo">
-                <h1>
+                <div>
                   {sider_logo.map(({ text, classname }) => (
                     <span key={text} className={classname}>
                       {text}
                     </span>
                   ))}
-                </h1>
+                </div>
               </div>
               <Breadcrumb>
                 <Breadcrumb.Item>
@@ -187,10 +187,7 @@ const Styled = styled.div`
         height: 100%;
         padding: 0;
         margin-left: 10px;
-
-        & h1 {
-          margin: 0;
-        }
+        padding: 2px 0 0;
 
         ${props =>
           !props.broken &&
@@ -219,7 +216,7 @@ const Styled = styled.div`
 
         &::before {
           content: '//';
-          margin: 0 10px;
+          margin: -1px 5px 0;
         }
 
         & h2 {
