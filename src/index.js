@@ -10,8 +10,6 @@ import Router from './component/Router';
 import Layout from './container/Layout';
 
 const GlobalStyles = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Montserrat');
-
   html, body {
     width: 100%;
     height: 100%;
