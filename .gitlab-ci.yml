@@ -21,6 +21,9 @@ stages:
 install:
   <<: *general
   stage: install
+  cache:
+    paths:
+      - node_modules
   script:
     - yarn install
   artifacts:
