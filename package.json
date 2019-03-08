@@ -24,8 +24,10 @@
     "styled-components": "4.1.3"
   },
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
+    "get-md5": "node scripts/file-hash.js",
+    "some-image-md5": "echo $(yarn -s get-md5 public/img/some-logo.png)",
+    "start": "REACT_APP_PAGE_IMAGE_HASH=$(yarn -s some-image-md5) react-app-rewired start",
+    "build": "REACT_APP_PAGE_IMAGE_HASH=$(yarn -s some-image-md5) react-app-rewired build",
     "test": "react-app-rewired test --silent --verbose --detectOpenHandles --forceExit --color",
     "eject": "react-scripts eject"
   },
