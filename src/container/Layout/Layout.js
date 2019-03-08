@@ -132,8 +132,8 @@ const Styled = styled.div`
         margin: 16px 0;
 
         &::before {
-          content: '// ';
-          margin-right: 10px;
+          content: '//';
+          margin: 0 10px;
         }
       }
 
