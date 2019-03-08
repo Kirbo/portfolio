@@ -8,7 +8,7 @@ const Routes = [
   {
     exact: true,
     path: '/',
-    icon: ['fas','user-circle'],
+    icon: ['fas', 'user-circle'],
     name: 'Me',
     component: () => <Me />
   },

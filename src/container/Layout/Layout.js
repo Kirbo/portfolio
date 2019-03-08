@@ -6,7 +6,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 
-import { Layout, Menu, Icon, Breadcrumb } from 'antd';
+import { Layout, Menu, Breadcrumb } from 'antd';
 
 import Routes from '../../component/Router/Routes';
 
@@ -21,6 +21,12 @@ const { Header, Sider, Content, Footer } = Layout;
 
 const YEAR_STARTED = 2019;
 const YEAR_NOW = new Date().getFullYear();
+
+const getBreadcrumb = currentRoute => {
+  const foundRoute = Routes.find(({ path }) => path === currentRoute);
+
+  return foundRoute ? foundRoute.name : '';
+}
 
 const PortfolioLayout = ({ history, children }) => (
   <Consumer>
@@ -49,7 +55,7 @@ const PortfolioLayout = ({ history, children }) => (
               mode="inline"
               onClick={onClickMenuItem}
             >
-              {Routes.map(({ path, icon, name }) => (
+              {Routes.filter(({name}) => name).map(({ path, icon, name }) => (
                 <Menu.Item key={`menu-${path}`}>
                   <Link to={path}>
                     <FAIcon icon={icon} />
@@ -62,7 +68,7 @@ const PortfolioLayout = ({ history, children }) => (
           <Layout>
             <Header>
               <Breadcrumb>
-                <Breadcrumb.Item>{Routes.find(({path}) => path === currentRoute).name}</Breadcrumb.Item>
+                <Breadcrumb.Item>{getBreadcrumb(currentRoute)}</Breadcrumb.Item>
               </Breadcrumb>
             </Header>
             <Content>{children}</Content>

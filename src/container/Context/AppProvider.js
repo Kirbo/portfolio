@@ -25,10 +25,11 @@ class AppProvider extends Component {
   };
 
   static getDerivedStateFromProps = (props, state) => {
-    return {
+    const newState = {
       ...state,
-      currentRoute: props.location.pathname
+      currentRoute: props.location.pathname,
     };
+    return newState;
   };
 
   render = () => <Provider value={this.state}>{this.props.children}</Provider>;
