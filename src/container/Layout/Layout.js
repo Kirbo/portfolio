@@ -8,6 +8,8 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 
 import { Layout, Menu, Breadcrumb } from 'antd';
 
+import { page } from '../../../package.json';
+
 import Routes from '../../component/Router/Routes';
 
 import { PROFILE_LINKS } from '../../assets/constants';
@@ -26,9 +28,9 @@ const getBreadcrumb = currentRoute => {
   const foundRoute = Routes.find(({ path }) => path === currentRoute);
 
   return foundRoute ? foundRoute.name : '';
-}
+};
 
-const { REACT_APP_PAGE_TITLE } = process.env;
+const { sider_logo } = page;
 
 const PortfolioLayout = ({ history, children }) => (
   <Consumer>
@@ -39,7 +41,7 @@ const PortfolioLayout = ({ history, children }) => (
       onClickMenuItem,
       onCollapse,
       sliderCollapsed,
-      currentRoute,
+      currentRoute
     }) => (
       <Styled broken={broken}>
         <Layout>
@@ -50,15 +52,22 @@ const PortfolioLayout = ({ history, children }) => (
             collapsedWidth={collapsedWidth}
             onBreakpoint={onBreakpoint}
           >
-            <h1>{REACT_APP_PAGE_TITLE}</h1>
-            <div className="logo" />
+            <div className="logo">
+              <h1>
+                {sider_logo.map(({ text, classname }) => (
+                  <span key={text} className={classname}>
+                    {text}
+                  </span>
+                ))}
+              </h1>
+            </div>
             <Menu
               defaultSelectedKeys={[`menu-${currentRoute}`]}
               theme="dark"
               mode="inline"
               onClick={onClickMenuItem}
             >
-              {Routes.filter(({name}) => name).map(({ path, icon, name }) => (
+              {Routes.filter(({ name }) => name).map(({ path, icon, name }) => (
                 <Menu.Item key={`menu-${path}`}>
                   <Link to={path}>
                     <FAIcon icon={icon} />
@@ -70,6 +79,15 @@ const PortfolioLayout = ({ history, children }) => (
           </Sider>
           <Layout>
             <Header>
+              <div className="logo">
+                <h1>
+                  {sider_logo.map(({ text, classname }) => (
+                    <span key={text} className={classname}>
+                      {text}
+                    </span>
+                  ))}
+                </h1>
+              </div>
               <Breadcrumb>
                 <Breadcrumb.Item>
                   <h2>{getBreadcrumb(currentRoute)}</h2>
@@ -116,7 +134,14 @@ const Styled = styled.div`
       background: #00142a;
 
       & h1 {
-        display: none;
+        font-family: 'Montserrat', sans-serif;
+        display: flex;
+        flex: 1;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        font-weight: bold;
       }
 
       & .ant-menu {
@@ -133,6 +158,20 @@ const Styled = styled.div`
     & .logo {
       width: 100%;
       height: 60px;
+
+      ${props =>
+        props.broken &&
+        css`
+          display: none;
+        `}
+
+      & .domain {
+        color: #fff;
+      }
+
+      & .tld {
+        color: #e60004;
+      }
     }
 
     & .ant-layout-header {
@@ -143,8 +182,40 @@ const Styled = styled.div`
       background: #fff;
       padding: 0;
 
+      & .logo {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin-left: 10px;
+
+        & h1 {
+          margin: 0;
+        }
+
+        ${props =>
+          !props.broken &&
+          css`
+            display: none;
+          `}
+
+        & .domain {
+          color: #000;
+        }
+
+        & .tld {
+          color: #e60004;
+        }
+      }
+
       & .ant-breadcrumb {
         margin: 16px 0;
+
+        ${props =>
+          props.broken &&
+          css`
+            margin: 0;
+            padding: 0;
+          `}
 
         &::before {
           content: '//';
@@ -180,7 +251,7 @@ const Styled = styled.div`
       text-align: center;
 
       & a {
-        color: #A60D0D;
+        color: #a60d0d;
       }
     }
   }
