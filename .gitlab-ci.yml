@@ -26,16 +26,13 @@ install:
       - node_modules
   script:
     - yarn install
-  artifacts:
-    expire_in: 1 day
-    paths:
-      - node_modules
   only:
     - master
 
 test:
   <<: *general
   stage: test
+  dependencies: []
   artifacts:
     paths:
       - coverage
@@ -48,8 +45,7 @@ test:
 build:
   <<: *general
   stage: build
-  dependencies:
-    - install
+  dependencies: []
   script:
     - yarn build
   artifacts:
@@ -63,6 +59,7 @@ deploy:
   <<: *general
   image: sergeyfast/alpine-rsync
   stage: deploy
+  cache: []
   dependencies:
     - build
   before_script:
