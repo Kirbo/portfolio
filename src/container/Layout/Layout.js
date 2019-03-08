@@ -27,9 +27,7 @@ const PortfolioLayout = ({ children }) => (
       onCollapse,
       sliderCollapsed,
     }) => (
-      <Styled
-        broken={broken}
-      >
+      <Styled broken={broken}>
         <Layout>
           <Sider
             breakpoint="lg"
@@ -90,7 +88,6 @@ const PortfolioLayout = ({ children }) => (
   </Consumer>
 );
 
-
 const Styled = styled.div`
   width: 100%;
   height: 100%;
@@ -99,10 +96,14 @@ const Styled = styled.div`
     height: 100%;
     flex: 1 0 auto;
     ${props =>
-    props.broken &&
-    css`
+      props.broken &&
+      css`
         flex: 1 0 100%;
       `}
+
+    .ant-layout-sider {
+      background: #00142a;
+    }
 
     .ant-layout-sider-zero-width-trigger {
       z-index: 10;
@@ -117,7 +118,7 @@ const Styled = styled.div`
       display: flex;
       position: fixed;
       width: 100%;
-      box-shadow: 0px 2px 10px rgba(0,0,0,0.25);
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
 
       & > * {
         display: flex;
