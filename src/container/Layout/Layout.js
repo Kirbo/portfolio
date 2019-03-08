@@ -28,6 +28,8 @@ const getBreadcrumb = currentRoute => {
   return foundRoute ? foundRoute.name : '';
 }
 
+const { REACT_APP_PAGE_TITLE } = process.env;
+
 const PortfolioLayout = ({ history, children }) => (
   <Consumer>
     {({
@@ -48,6 +50,7 @@ const PortfolioLayout = ({ history, children }) => (
             collapsedWidth={collapsedWidth}
             onBreakpoint={onBreakpoint}
           >
+            <h1>{REACT_APP_PAGE_TITLE}</h1>
             <div className="logo" />
             <Menu
               defaultSelectedKeys={[`menu-${currentRoute}`]}
@@ -68,7 +71,9 @@ const PortfolioLayout = ({ history, children }) => (
           <Layout>
             <Header>
               <Breadcrumb>
-                <Breadcrumb.Item>{getBreadcrumb(currentRoute)}</Breadcrumb.Item>
+                <Breadcrumb.Item>
+                  <h2>{getBreadcrumb(currentRoute)}</h2>
+                </Breadcrumb.Item>
               </Breadcrumb>
             </Header>
             <Content>{children}</Content>
@@ -110,6 +115,10 @@ const Styled = styled.div`
     & .ant-layout-sider {
       background: #00142a;
 
+      & h1 {
+        display: none;
+      }
+
       & .ant-menu {
         & .ant-menu-item a svg {
           margin-right: 14px;
@@ -141,6 +150,13 @@ const Styled = styled.div`
           content: '//';
           margin: 0 10px;
         }
+
+        & h2 {
+          font-size: 14px;
+          font-weight: normal;
+          margin: 0;
+          color: inherit;
+        }
       }
 
       & > * {
@@ -162,6 +178,10 @@ const Styled = styled.div`
     & .ant-layout-footer {
       padding: 0 16px 24px;
       text-align: center;
+
+      & a {
+        color: #A60D0D;
+      }
     }
   }
 `;
