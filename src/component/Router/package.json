@@ -1,6 +1,6 @@
 {
-  "name": "Home",
+  "name": "Router",
   "version": "1.0.0",
-  "main": "Home.js",
+  "main": "Router.js",
   "license": "MIT"
 }

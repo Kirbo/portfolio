@@ -1,15 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { FontAwesomeIcon as FAIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 
 import { Layout, Menu, Icon, Breadcrumb } from 'antd';
+
+import Routes from '../../component/Router/Routes';
 
 import { PROFILE_LINKS } from '../../assets/constants';
 import { Consumer } from '../Context/Context';
 import A from '../../component/A';
 
+library.add(fas);
 library.add(fab);
 
 const { Header, Sider, Content, Footer } = Layout;
@@ -17,7 +22,7 @@ const { Header, Sider, Content, Footer } = Layout;
 const YEAR_STARTED = 2019;
 const YEAR_NOW = new Date().getFullYear();
 
-const PortfolioLayout = ({ children }) => (
+const PortfolioLayout = ({ history, children }) => (
   <Consumer>
     {({
       broken,
@@ -26,6 +31,7 @@ const PortfolioLayout = ({ children }) => (
       onClickMenuItem,
       onCollapse,
       sliderCollapsed,
+      currentRoute,
     }) => (
       <Styled broken={broken}>
         <Layout>
@@ -38,35 +44,29 @@ const PortfolioLayout = ({ children }) => (
           >
             <div className="logo" />
             <Menu
+              defaultSelectedKeys={[`menu-${currentRoute}`]}
               theme="dark"
               mode="inline"
-              defaultSelectedKeys={['1']}
               onClick={onClickMenuItem}
             >
-              <Menu.Item key="1">
-                <Icon type="user" />
-                <span>nav 1</span>
-              </Menu.Item>
-              <Menu.Item key="2">
-                <Icon type="video-camera" />
-                <span>nav 2</span>
-              </Menu.Item>
-              <Menu.Item key="3">
-                <Icon type="upload" />
-                <span>nav 3</span>
-              </Menu.Item>
+              {Routes.map(({ path, icon, name }) => (
+                <Menu.Item key={`menu-${path}`}>
+                  <Link to={path}>
+                    <FAIcon icon={icon} />
+                    <span>{name}</span>
+                  </Link>
+                </Menu.Item>
+              ))}
             </Menu>
           </Sider>
           <Layout>
-            <Header style={{ background: '#fff', padding: 0 }}>
-              <Breadcrumb style={{ margin: '16px 0' }}>
-                <Breadcrumb.Item>Home</Breadcrumb.Item>
-                <Breadcrumb.Item>List</Breadcrumb.Item>
-                <Breadcrumb.Item>App</Breadcrumb.Item>
+            <Header>
+              <Breadcrumb>
+                <Breadcrumb.Item>{Routes.find(({path}) => path === currentRoute).name}</Breadcrumb.Item>
               </Breadcrumb>
             </Header>
             <Content>{children}</Content>
-            <Footer style={{ textAlign: 'center' }}>
+            <Footer>
               <Links>
                 {PROFILE_LINKS.map(({ name, url, icon, color }) => (
                   <A href={url} key={name}>
@@ -101,8 +101,14 @@ const Styled = styled.div`
         flex: 1 0 100%;
       `}
 
-    .ant-layout-sider {
+    & .ant-layout-sider {
       background: #00142a;
+
+      & .ant-menu {
+        & .ant-menu-item a svg {
+          margin-right: 14px;
+        }
+      }
     }
 
     .ant-layout-sider-zero-width-trigger {
@@ -119,6 +125,17 @@ const Styled = styled.div`
       position: fixed;
       width: 100%;
       box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+      background: #fff;
+      padding: 0;
+
+      & .ant-breadcrumb {
+        margin: 16px 0;
+
+        &::before {
+          content: '// ';
+          margin-right: 10px;
+        }
+      }
 
       & > * {
         display: flex;
@@ -138,6 +155,7 @@ const Styled = styled.div`
 
     & .ant-layout-footer {
       padding: 0 16px 24px;
+      text-align: center;
     }
   }
 `;

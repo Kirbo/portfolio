@@ -6,10 +6,10 @@ const Styled = styled.div`
   height: 100%;
 `;
 
-const Home = () => (
+const Me = () => (
   <Styled>
-    <div>Hello world!</div>
+    <div>Here will be the introduction about me!</div>
   </Styled>
 );
 
-export default Home;
+export default Me;
