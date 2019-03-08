@@ -134,7 +134,6 @@ const Styled = styled.div`
       background: #00142a;
 
       & h1 {
-        font-family: 'Montserrat', sans-serif;
         display: flex;
         flex: 1;
         height: 100%;
@@ -156,6 +155,7 @@ const Styled = styled.div`
     }
 
     & .logo {
+      font-family: 'Montserrat', sans-serif;
       width: 100%;
       height: 60px;
 
@@ -188,6 +188,7 @@ const Styled = styled.div`
         padding: 0;
         margin-left: 10px;
         padding: 2px 0 0;
+        font-family: 'Montserrat', sans-serif;
 
         ${props =>
           !props.broken &&
