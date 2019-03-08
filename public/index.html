@@ -3,7 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <meta name="description" content="%REACT_APP_PAGE_DESCRIPTION%" />
 
@@ -12,22 +15,45 @@
     <meta property="og:description" content="%REACT_APP_PAGE_DESCRIPTION%" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="%REACT_APP_PAGE_URL%" />
-    <meta property="og:image" content="%REACT_APP_PAGE_URL%/%REACT_APP_PAGE_IMAGE%" />
+    <meta
+      property="og:image"
+      content="%REACT_APP_PAGE_URL%/%REACT_APP_PAGE_IMAGE%"
+    />
     <meta property="og:locale" content="%REACT_APP_PAGE_LOCALE%" />
 
     <meta name="twitter:title" content="%REACT_APP_PAGE_TITLE%" />
     <meta name="twitter:description" content="%REACT_APP_PAGE_DESCRIPTION%" />
-    <meta name="twitter:image" content="%REACT_APP_PAGE_URL%/%REACT_APP_PAGE_IMAGE%" />
+    <meta
+      name="twitter:image"
+      content="%REACT_APP_PAGE_URL%/%REACT_APP_PAGE_IMAGE%"
+    />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@Kirbowned" />
     <meta name="twitter:creator" content="@Kirbowned" />
-
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
     <title>%REACT_APP_PAGE_TITLE%</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div id="root">
+      <style>
+        html, body {
+          width: 100%;
+          height: 100%;
+          margin: 0;
+          padding: 0;
+        }
+        #root {
+          font-size: 14px;
+          color: #000;
+          font-family: arial;
+          display: flex;
+          height: 100%;
+          align-items: center;
+          justify-content: center;
+        }
+      </style>
+      Loading, please stand by...
+    </div>
   </body>
 </html>

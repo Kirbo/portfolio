@@ -5,12 +5,13 @@ import { BrowserRouter } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 
 import AppProvider from './container/Context/AppProvider';
-import { Consumer } from './container/Context/Context';
 
 import Router from './component/Router';
 import Layout from './container/Layout';
 
 const GlobalStyles = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css?family=Montserrat');
+
   html, body {
     width: 100%;
     height: 100%;
@@ -32,16 +33,12 @@ const Application = () => (
   <BrowserRouter>
     <Switch>
       <AppProvider>
-        <Consumer>
-          {({ Page }) => (
-            <React.Fragment>
-              <GlobalStyles />
-              <Layout>
-                <Router />
-              </Layout>
-            </React.Fragment>
-          )}
-        </Consumer>
+        <React.Fragment>
+          <GlobalStyles />
+          <Layout>
+            <Router />
+          </Layout>
+        </React.Fragment>
       </AppProvider>
     </Switch>
   </BrowserRouter>
