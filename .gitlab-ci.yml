@@ -35,6 +35,8 @@ test:
   stage: test
   cache:
     policy: pull
+    paths:
+      - node_modules
   dependencies: []
   artifacts:
     paths:
@@ -50,6 +52,8 @@ build:
   stage: build
   cache:
     policy: pull
+    paths:
+      - node_modules
   dependencies: []
   script:
     - yarn build
