@@ -67,7 +67,7 @@ const Styled = styled.div`
     height: 100%;
 
     & .logo {
-      width: 100%;
+      width: 50%;
       height: 60px;
       align-items: center;
       display: flex;
