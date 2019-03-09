@@ -21,6 +21,8 @@ deploy:
   stage: deploy
   cache: {}
   dependencies: []
+  environment:
+    name: ${CI_COMMIT_REF_NAME}
   before_script:
     - eval $(ssh-agent -s)
     - mkdir -m 700 -p ~/.ssh
@@ -31,3 +33,4 @@ deploy:
     - rsync --delete-after -rve 'ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=quiet' public/ ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PATH}/${CI_COMMIT_REF_NAME}/
   only:
     - master
+    - beta
