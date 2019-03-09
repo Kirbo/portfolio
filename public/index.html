@@ -54,16 +54,19 @@
           background: rgb(0, 20, 42);
         }
         .container {
-          margin-top: 40px;
+          position: relative;
         }
         .loading {
           color: #666;
           padding: 10px;
           opacity: 1;
           transition: all 0.5s ease;
+          position: absolute;
+          bottom: -30px;
         }
         .hidden {
           opacity: 0;
+          bottom: -60px;
         }
         .dAizxT {
           width: 100%;
@@ -90,9 +93,11 @@
         }
       </style>
       <script>
-        if ('%NODE_ENV%' !== 'production') {
+        if ('%NODE_ENV%' === 'development') {
           setTimeout(function() {
-            document.querySelector('.loading').classList.remove('hidden');
+            if (document.querySelector('.loading')) {
+              document.querySelector('.loading').classList.remove('hidden');
+            }
           }, 1500);
         }
       </script>
