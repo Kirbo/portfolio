@@ -6,13 +6,16 @@ import styled from 'styled-components';
 import { ReactComponent as SVG } from './Logo.svg';
 
 const Styled = styled.div`
-  height: 16px;
+  height: 20px;
 
   & svg {
-    width: 100px;
+    width: 150px;
   }
 
   &.dark {
+    & .react-tags {
+      fill: #333;
+    }
     & .kirbo {
       fill: #fff;
     }
@@ -22,6 +25,9 @@ const Styled = styled.div`
   }
 
   &.light {
+    & .react-tags {
+      fill: #eee;
+    }
     & .kirbo {
       fill: #000;
     }

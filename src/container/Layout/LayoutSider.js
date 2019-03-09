@@ -67,12 +67,12 @@ const Styled = styled.div`
     height: 100%;
 
     & .logo {
-      width: 50%;
+      width: 75%;
       height: 60px;
       align-items: center;
       display: flex;
       flex: 0;
-      margin: 0 50px;
+      margin: 0 25px;
 
       & h1 {
         display: none;
