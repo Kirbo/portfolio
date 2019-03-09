@@ -41,16 +41,6 @@
     "not op_mini all"
   ],
   "page": {
-    "sider_logo": [
-      {
-        "text": "Kirbo",
-        "classname": "domain"
-      },
-      {
-        "text": ".DEV",
-        "classname": "tld"
-      }
-    ],
     "title": "Kirbo.DEV",
     "description": "Personal portfolio and technical blog of Kimmo Saari (Kirbo)",
     "url": "https://kirbo.dev",
