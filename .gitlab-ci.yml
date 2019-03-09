@@ -29,6 +29,6 @@ deploy:
     - ssh-add ~/.ssh/id_rsa
   script:
     - echo ${REMOTE_PATH}/${CI_COMMIT_REF_NAME}
-    - rsync -e 'ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=quiet' build/* ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PATH}/${CI_COMMIT_REF_NAME}/ --delete-after -r -v
+    - rsync -e 'ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=quiet' build/* ${REMOTE_USER}@${REMOTE_HOST}:"${REMOTE_PATH}/${CI_COMMIT_REF_NAME}" --delete-after -r -v
   only:
     - master
