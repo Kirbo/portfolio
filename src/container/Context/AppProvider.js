@@ -9,24 +9,24 @@ class AppProvider extends Component {
     onBreakpoint: broken => {
       this.setState(prevState => ({
         broken,
-        collapsedWidth: broken ? 0 : 80
+        collapsedWidth: broken ? 0 : 80,
       }));
     },
     onClickMenuItem: () => {
       this.setState(prevState => ({
-        sliderCollapsed: prevState.broken && !prevState.sliderCollapsed
+        sliderCollapsed: prevState.broken && !prevState.sliderCollapsed,
       }));
     },
     onCollapse: () => {
       this.setState(prevState => ({
-        sliderCollapsed: !prevState.sliderCollapsed
+        sliderCollapsed: !prevState.sliderCollapsed,
       }));
-    }
+    },
   };
 
   static getDerivedStateFromProps = (props, state) => ({
-      ...state,
-      currentRoute: props.location.pathname,
+    ...state,
+    currentRoute: props.location.pathname,
   });
 
   render = () => <Provider value={this.state}>{this.props.children}</Provider>;

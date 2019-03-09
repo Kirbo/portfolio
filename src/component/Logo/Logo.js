@@ -6,13 +6,8 @@ import styled from 'styled-components';
 import { ReactComponent as SVG } from './Logo.svg';
 
 const Styled = styled.div`
-  max-width: 100%;
-  height: 100%;
-  display: block;
-
   & svg {
-    width: 100%;
-    height: 100%;
+    width: 100px;
   }
 
   &.dark {
@@ -41,11 +36,11 @@ const Logo = ({ theme }) => (
 );
 
 Logo.defaultProps = {
-  theme: 'dark'
+  theme: 'dark',
 };
 
 Logo.propTypes = {
-  theme: PropTypes.oneOf(['light', 'dark'])
+  theme: PropTypes.oneOf(['light', 'dark']),
 };
 
 export default Logo;

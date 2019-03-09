@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { Route, Switch } from 'react-router';
 
-import Routes from './Routes';
+import Routes from '../../routes';
 import LoadingPage from './LoadingPage';
 
 const Router = () => (
