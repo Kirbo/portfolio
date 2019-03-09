@@ -28,6 +28,6 @@ deploy:
     - chmod 600 ~/.ssh/id_rsa
     - ssh-add ~/.ssh/id_rsa
   script:
-    - rsync -e 'ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=quiet' src/publis/* ${REMOTE_USER}@${REMOTE_HOST}:"${REMOTE_PATH}/${CI_COMMIT_REF_NAME}" --delete-after -r -v
+    - rsync -e 'ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=quiet' src/public/* ${REMOTE_USER}@${REMOTE_HOST}:"${REMOTE_PATH}/${CI_COMMIT_REF_NAME}" --delete-after -r -v
   only:
     - master
