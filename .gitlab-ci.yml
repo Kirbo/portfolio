@@ -20,8 +20,7 @@ deploy:
   image: sergeyfast/alpine-rsync
   stage: deploy
   cache: {}
-  dependencies:
-    - build
+  dependencies: []
   before_script:
     - eval $(ssh-agent -s)
     - mkdir -m 700 -p ~/.ssh
