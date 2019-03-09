@@ -10,7 +10,7 @@ import Landing from './component/Landing';
 import Router from './component/Router';
 import Layout from './container/Layout';
 
-const NODE_ENV = 'production';
+const { NODE_ENV } = process.env;
 
 const Application = () => (
   <BrowserRouter>
