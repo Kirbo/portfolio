@@ -14,6 +14,8 @@ import Routes from '../../component/Router/Routes';
 
 import { PROFILE_LINKS } from '../../assets/constants';
 import { Consumer } from '../Context/Context';
+
+import Logo from '../../component/Logo';
 import A from '../../component/A';
 
 library.add(fas);
@@ -23,14 +25,13 @@ const { Header, Sider, Content, Footer } = Layout;
 
 const YEAR_STARTED = 2019;
 const YEAR_NOW = new Date().getFullYear();
+const COPYRIGHT_YEAR = `${YEAR_STARTED}${(YEAR_NOW > YEAR_STARTED ? ` - ${YEAR_NOW}` : '')}`;
 
 const getBreadcrumb = currentRoute => {
   const foundRoute = Routes.find(({ path }) => path === currentRoute);
 
   return foundRoute ? foundRoute.name : '';
 };
-
-const { sider_logo } = page;
 
 const PortfolioLayout = ({ history, children }) => (
   <Consumer>
@@ -53,13 +54,8 @@ const PortfolioLayout = ({ history, children }) => (
             onBreakpoint={onBreakpoint}
           >
             <div className="logo">
-              <h1>
-                {sider_logo.map(({ text, classname }) => (
-                  <span key={text} className={classname}>
-                    {text}
-                  </span>
-                ))}
-              </h1>
+              <h1>{page.title}</h1>
+              <Logo />
             </div>
             <Menu
               defaultSelectedKeys={[`menu-${currentRoute}`]}
@@ -80,13 +76,7 @@ const PortfolioLayout = ({ history, children }) => (
           <Layout>
             <Header>
               <div className="logo">
-                <div>
-                  {sider_logo.map(({ text, classname }) => (
-                    <span key={text} className={classname}>
-                      {text}
-                    </span>
-                  ))}
-                </div>
+                <Logo theme="light" />
               </div>
               <Breadcrumb>
                 <Breadcrumb.Item>
@@ -106,7 +96,7 @@ const PortfolioLayout = ({ history, children }) => (
               </Links>
               <Copyright>
                 <div>
-                  Kimmo Saari ©{YEAR_STARTED} {YEAR_NOW > YEAR_STARTED && ` - ${YEAR_NOW}`}
+                  Kimmo Saari ©{COPYRIGHT_YEAR}
                 </div>
                 {/* <div>Created by <A href="https://ant.design/docs/react/introduce">Ant UED</A></div> */}
               </Copyright>
@@ -156,7 +146,6 @@ const Styled = styled.div`
     }
 
     & .logo {
-      font-family: 'Montserrat', sans-serif;
       width: 100%;
       height: 60px;
 
@@ -166,12 +155,8 @@ const Styled = styled.div`
           display: none;
         `}
 
-      & .domain {
-        color: #fff;
-      }
-
-      & .tld {
-        color: #e60004;
+      & h1 {
+        display: none;
       }
     }
 
@@ -187,9 +172,8 @@ const Styled = styled.div`
         width: 100%;
         height: 100%;
         padding: 0;
-        margin-left: 10px;
+        margin: 0 -8px 0 10px;
         padding: 2px 0 0;
-        font-family: 'Montserrat', sans-serif;
 
         ${props =>
           !props.broken &&
@@ -197,12 +181,8 @@ const Styled = styled.div`
             display: none;
           `}
 
-        & .domain {
-          color: #000;
-        }
-
-        & .tld {
-          color: #e60004;
+          & > div {
+            width: 100px;
         }
       }
 
@@ -218,7 +198,7 @@ const Styled = styled.div`
 
         &::before {
           content: '//';
-          margin: -1px 5px 0;
+          margin: 0 5px;
         }
 
         & h2 {

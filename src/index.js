@@ -9,9 +9,22 @@ import AppProvider from './container/Context/AppProvider';
 import Router from './component/Router';
 import Layout from './container/Layout';
 
-const GlobalStyles = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Montserrat');
+const Application = () => (
+  <BrowserRouter>
+    <Switch>
+      <AppProvider>
+        <React.Fragment>
+          <GlobalStyles />
+          <Layout>
+            <Router />
+          </Layout>
+        </React.Fragment>
+      </AppProvider>
+    </Switch>
+  </BrowserRouter>
+);
 
+const GlobalStyles = createGlobalStyle`
   html, body {
     width: 100%;
     height: 100%;
@@ -28,20 +41,5 @@ const GlobalStyles = createGlobalStyle`
     justify-content: center;
   }
 `;
-
-const Application = () => (
-  <BrowserRouter>
-    <Switch>
-      <AppProvider>
-        <React.Fragment>
-          <GlobalStyles />
-          <Layout>
-            <Router />
-          </Layout>
-        </React.Fragment>
-      </AppProvider>
-    </Switch>
-  </BrowserRouter>
-);
 
 ReactDOM.render(<Application />, document.getElementById('root'));
