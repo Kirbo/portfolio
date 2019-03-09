@@ -6,8 +6,11 @@ import { createGlobalStyle } from 'styled-components';
 
 import AppProvider from './container/Context/AppProvider';
 
+import Landing from './component/Landing';
 import Router from './component/Router';
 import Layout from './container/Layout';
+
+const NODE_ENV = 'production';
 
 const Application = () => (
   <BrowserRouter>
@@ -23,6 +26,17 @@ const Application = () => (
     </Switch>
   </BrowserRouter>
 );
+
+
+const Render = () =>
+  NODE_ENV === 'production' ? (
+    <React.Fragment>
+      <GlobalStyles />
+      <Landing />
+    </React.Fragment>
+  ) : (
+    <Application />
+  );
 
 const GlobalStyles = createGlobalStyle`
   html, body {
@@ -42,4 +56,4 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-ReactDOM.render(<Application />, document.getElementById('root'));
+ReactDOM.render(<Render />, document.getElementById('root'));
