@@ -155,6 +155,11 @@ const Styled = styled.div`
           display: none;
         `}
 
+      & > div {
+        width: 100%;
+        padding: 20px;
+      }
+
       & h1 {
         display: none;
       }
@@ -181,8 +186,9 @@ const Styled = styled.div`
             display: none;
           `}
 
-          & > div {
-            width: 100px;
+        & > div {
+          width: 85px;
+          padding: 0 6px;
         }
       }
 
