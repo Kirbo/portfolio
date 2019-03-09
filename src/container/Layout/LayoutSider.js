@@ -79,13 +79,18 @@ const Styled = styled.div`
       }
     }
 
-    & .ant-menu .ant-menu-item a {
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;
+    & .ant-menu {
+      overflow: auto;
+      height: 100%;
 
-      & svg {
-        margin-right: 14px;
+      & .ant-menu-item a {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+
+        & svg {
+          margin-right: 14px;
+        }
       }
     }
   }

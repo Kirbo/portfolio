@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { Layout, Breadcrumb } from 'antd';
 
-import { getBreadcrumb, conditionallyHide } from '../../misc/utils';
+import { getBreadcrumb } from '../../misc/utils';
 import { Consumer } from '../Context/Context';
 
 const { Header } = Layout;
