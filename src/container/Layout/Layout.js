@@ -157,7 +157,7 @@ const Styled = styled.div`
 
       & > div {
         width: 100%;
-        padding: 20px;
+        padding: 0 50px;
       }
 
       & h1 {
@@ -177,7 +177,7 @@ const Styled = styled.div`
         width: 100%;
         height: 100%;
         padding: 0;
-        margin: 0 -8px 0 10px;
+        margin: 0 -8px 0 6px;
         padding: 2px 0 0;
 
         ${props =>
