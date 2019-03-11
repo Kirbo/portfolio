@@ -4,6 +4,12 @@
   "private": true,
   "repository": "https://gitlab.devaus.eu/kirbo/portfolio.git",
   "homepage": "https://kirbo.dev",
+  "page": {
+    "title": "Kirbo.DEV",
+    "description": "Personal portfolio and technical blog of Kimmo Saari (Kirbo)",
+    "locale": "en_US",
+    "image": "img/some-logo.png"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "1.2.15",
     "@fortawesome/free-brands-svg-icons": "5.7.2",
@@ -39,12 +45,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "page": {
-    "title": "Kirbo.DEV",
-    "description": "Personal portfolio and technical blog of Kimmo Saari (Kirbo)",
-    "url": "https://kirbo.dev",
-    "locale": "fi_FI",
-    "image": "img/some-logo.png"
-  }
+  ]
 }

@@ -1,4 +1,5 @@
 # https://docs.gitlab.com/ce/ci/yaml/README.html
+# https://docs.gitlab.com/ce/ci/variables/
 
 ###### GENERAL ################################################################
 image: node:8.11.2
